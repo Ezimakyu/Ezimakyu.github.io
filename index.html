@@ -1,7 +1,158 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <h1>The Master Plan Website</h1>
-        <p>Where it all began</p>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stephen Zhu's personal website and project portfolio." />
+  <title>Stephen Zhu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Canvas sits behind the hero only -->
+  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a class="nav__logo" href="#top">SZ</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav__cta" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <!-- EDIT: name, tagline, and primary CTA text below -->
+    <section class="hero" id="hero">
+      <div class="container hero__content">
+        <p class="hero__eyebrow">Hello, I'm</p>
+        <h1 class="hero__title">Stephen Zhu</h1>
+        <p class="hero__subtitle">
+          Computer Science student at the University of Illinois Urbana-Champaign.
+          I build AI-driven tools, full-stack systems, and interactive experiments.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">Explore projects</a>
+          <a class="btn btn--ghost" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about section">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <!-- EDIT: the paragraphs, interests, and status badges below -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">01 — About</span>
+          <h2 class="section__title">A quick peek</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>
+              I'm a CS student who enjoys going from a vague idea to a working prototype.
+              Most of my work lives at the intersection of <strong>machine learning</strong>,
+              <strong>systems</strong>, and <strong>interactive interfaces</strong>.
+            </p>
+            <p>
+              Lately I've been exploring LLM agents that plan and write code together,
+              reinforcement learning for robotics, and the tooling that makes those
+              experiments reproducible and visual.
+            </p>
+            <div class="about__tags">
+              <span class="tag tag--skill">LLM Agents</span>
+              <span class="tag tag--skill">Reinforcement Learning</span>
+              <span class="tag tag--skill">Full-Stack Web</span>
+              <span class="tag tag--skill">Systems Programming</span>
+              <span class="tag tag--skill">Quantitative Experiments</span>
+            </div>
+          </div>
+          <div class="about__card reveal">
+            <h3>Currently</h3>
+            <ul class="about__list">
+              <li>Studying CS at <a href="https://illinois.edu" target="_blank" rel="noopener">UIUC</a></li>
+              <li>Shipping side projects on GitHub</li>
+              <li>Open to internships &amp; collaborations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <!-- Project data is loaded from projects.json; keep the filter markup, edit cards via JSON. -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">02 — Projects</span>
+          <h2 class="section__title">Selected work</h2>
+        </div>
+
+        <div class="projects__controls reveal">
+          <div class="filter" role="tablist" aria-label="Project filters">
+            <button class="filter__btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="filter__btn" data-filter="Completed" role="tab" aria-selected="false">Completed</button>
+            <button class="filter__btn" data-filter="In progress" role="tab" aria-selected="false">In Progress</button>
+            <button class="filter__btn" data-filter="Incomplete" role="tab" aria-selected="false">Incomplete</button>
+          </div>
+          <p class="projects__note">
+            Click a card for a detailed write-up, or filter by status.
+          </p>
+        </div>
+
+        <div class="projects__grid" id="projects-grid">
+          <!-- Cards injected by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <!-- EDIT: email, links, and call-to-action text below -->
+    <section class="section contact" id="contact">
+      <div class="container reveal">
+        <div class="section__header section__header--center">
+          <span class="section__eyebrow">03 — Contact</span>
+          <h2 class="section__title">Let's build something</h2>
+          <p class="section__subtitle">
+            I'm always curious about new ideas, research, or side projects.
+            The best way to reach me is by email.
+          </p>
+        </div>
+        <div class="contact__links">
+          <a class="contact__link" href="mailto:swzhu2@illinois.edu">
+            <span class="contact__icon" aria-hidden="true">@</span>
+            <span>swzhu2@illinois.edu</span>
+          </a>
+          <a class="contact__link" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">
+            <span class="contact__icon" aria-hidden="true">GH</span>
+            <span>github.com/Ezimakyu</span>
+          </a>
+          <!-- EDIT: add LinkedIn / resume links here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Stephen Zhu. Built with plain HTML, CSS, and JS.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" type="module"></script>
+  <script src="js/canvas-bg.js" defer></script>
+</body>
 </html>
