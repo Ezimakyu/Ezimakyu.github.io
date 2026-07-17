@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "name": "IterViz",
+      "slug": "iterviz",
+      "status": "Completed",
+      "year": "2025",
+      "tagline": "Visual AI agent orchestrator that turns a sentence into a system architecture and working code.",
+      "summary": "A full-stack app where you describe a software idea in plain English, an LLM Architect generates a graph-based system contract, and a multi-agent Orchestrator implements each component in real time. A React Flow frontend lets you explore the contract, inspect per-node implementation subgraphs, and watch agents work over WebSocket.",
+      "details": [
+        "IterViz targets the handoff from a vague idea to running code. The backend is built with FastAPI and uses Pydantic schemas as a single source of truth across the entire pipeline.",
+        "Phase 1 — Planning: the Architect agent reads a natural-language prompt and produces a Contract (nodes for services, stores, UI, and external APIs; edges for data, control, and event flow). A Compiler agent then audits the contract for structural invariants and asks the user clarifying questions before the design is frozen.",
+        "Phase 2 — Implementation: the Orchestrator dispatches subagents, tracks assignments through drafted → in_progress → implemented, and finally runs a Connector pass to wire the generated modules into a runnable main.py.",
+        "The frontend is a React + TypeScript + Tailwind app using React Flow for the architecture graph and Zustand for contract, subgraph, and WebSocket state. Progress is streamed live to the browser.",
+        "I built the backend agents, the contract compiler/verifier, the orchestration engine, the REST and WebSocket APIs, and the frontend graph visualization components. The project is end-to-end functional and includes pytest coverage for chunking, pipeline orchestration, and storage adapter behavior."
+      ],
+      "tech": ["Python", "FastAPI", "Pydantic", "SQLite", "React", "TypeScript", "Tailwind CSS", "React Flow", "Zustand", "OpenAI/Anthropic APIs"],
+      "repo": "https://github.com/Ezimakyu/IterViz",
+      "live": null,
+      "thumbnail": null,
+      "thumbnailVideo": null
+    },
+    {
+      "name": "Brawl Stars Draft Board",
+      "slug": "brawlstars-tools",
+      "status": "Completed",
+      "year": "2025",
+      "tagline": "Interactive Brawl Stars draft board with drag-and-drop brawler categorization.",
+      "summary": "A web tool inspired by pro-tier brawler role maps. Organize brawlers into adjustable role columns, attach multiple ability tags to each bubble, and save or load draft boards as plain JSON.",
+      "details": [
+        "The app seeds a default board from a reference role map and lets the user fully customize columns and tags.",
+        "Each brawler is a draggable bubble. Bubbles can be moved between columns, renamed, or deleted. Tags are managed through a separate key panel with name and color editing, and each brawler can carry any number of tags.",
+        "State is persisted to a folder of your choice as brawlers.json and config.json, making drafts portable and version-controllable.",
+        "I wrote the Flask backend, the vanilla-JS drag-and-drop logic, the tag and column editor, and the persistence layer. It is a small but complete single-page app."
+      ],
+      "tech": ["Python", "Flask", "JavaScript", "HTML/CSS", "JSON"],
+      "repo": "https://github.com/Ezimakyu/brawlstars_tools",
+      "live": null,
+      "thumbnail": null,
+      "thumbnailVideo": null
+    },
+    {
+      "name": "Flow Matching Learning",
+      "slug": "flowmatching-learning",
+      "status": "In progress",
+      "year": "2025",
+      "tagline": "Turn lecture PDFs, slides, and videos into an interactive concept graph.",
+      "summary": "A hackathon-style pipeline that ingests course materials, transcribes media, extracts text and diagrams from PDFs, embeds chunks, and uses an LLM reasoning chain to build a navigable knowledge graph of concepts and prerequisite links.",
+      "details": [
+        "Phase A ingestion runs on Modal serverless GPUs: Whisper for audio and video transcription, a VLM for PDF and slide text and image extraction, and an embedding service for chunk vectorization. Results are stored in Actian VectorAI for similarity search.",
+        "Phase B reasoning uses OpenAI to: (1) generate a hierarchical table of contents from the material, (2) extract key concepts for each section, and (3) validate prerequisite and related edges between concepts using vector similarity and LLM judgment.",
+        "The backend exposes FastAPI endpoints and an end-to-end CLI, while the frontend renders the resulting graph_data.json as an interactive React Flow graph.",
+        "I designed the multi-stage pipeline, the compute-boundary enforcement layer, the versioned prompt templates, the hyperparameter config, and the frontend graph consumer. The system works end-to-end on sample data but still needs quality and robustness improvements."
+      ],
+      "tech": ["Python", "Modal", "FastAPI", "React", "OpenAI", "Actian VectorAI", "Whisper", "VLM", "Vector Search"],
+      "repo": "https://github.com/Ezimakyu/FlowMatchingLearning",
+      "live": null,
+      "thumbnail": null,
+      "thumbnailVideo": null
+    },
+    {
+      "name": "SAI Soccer RL",
+      "slug": "sai-soccer-rl",
+      "status": "Incomplete",
+      "year": "2025",
+      "tagline": "Reinforcement learning for humanoid robot soccer in the SAI Booster Soccer Showdown.",
+      "summary": "An exploration into training soccer-playing policies for the Booster T1 humanoid robot. Includes MuJoCo teleoperation, motion mimicry, imitation-learning baselines, and DDPG/SAC training scripts.",
+      "details": [
+        "The environment is the SAI Booster Soccer Showdown, a MuJoCo-based competition focused on generalizable robot soccer. I set up a local teleoperation harness that maps keyboard commands to SE3 joystick-style control of the lower-body robot.",
+        "The mimic/ tools compute forward kinematics and replay reference motion files to understand robot state and action structure. The imitation_learning/ directory contains JAX/Flax implementations of behavior cloning (BC), IQL, GCIQL, and HIQL agents, plus replay buffers and Weights & Biases logging.",
+        "I also wrote DDPG and SAC training loops, observation preprocessors that concatenate robot state, ball state, and environment info, and model checkpoints for submission to the SAI benchmark.",
+        "This repo is a work in progress: the training pipeline runs but the learned policies do not yet achieve reliable soccer behavior, and the SAI client integration still needs finishing."
+      ],
+      "tech": ["Python", "JAX", "Flax", "MuJoCo", "Gymnasium", "PyTorch", "Weights & Biases"],
+      "repo": "https://github.com/Ezimakyu/SAI_SoccerRL",
+      "live": null,
+      "thumbnail": null,
+      "thumbnailVideo": null
+    },
+    {
+      "name": "QuantConnect Crypto",
+      "slug": "quantconnect-crypto",
+      "status": "Incomplete",
+      "year": "2024",
+      "tagline": "Experimental machine-learning crypto trading bot on QuantConnect.",
+      "summary": "A QuantConnect algorithm that computes a basket of technical indicators each hour and feeds rolling-window features into a scikit-learn model to decide long/short/hold positions on BTC/USDT.",
+      "details": [
+        "The algorithm ingests hourly Binance market data and computes indicators including MACD, VWAP, RSI, ADX, CCI, Stochastic, CMO, and Ultimate Oscillator.",
+        "For each symbol, it maintains rolling windows of recent indicator values and passes them to a persisted scikit-learn model loaded from the QuantConnect object store. The model outputs one of three signals: short, hold, or long.",
+        "Position sizing is controlled by a fixed-invest fraction, with profit-taking at a 5% gain and a stop-loss at a 5% loss. A cooldown period prevents rapid trading.",
+        "This was an early exploration into algorithmic trading; most backtests lost money, so the project is archived as a learning exercise rather than a working strategy."
+      ],
+      "tech": ["Python", "QuantConnect API", "scikit-learn", "pandas", "joblib", "Technical Indicators"],
+      "repo": "https://github.com/Ezimakyu/quantconnect-crypto",
+      "live": null,
+      "thumbnail": null,
+      "thumbnailVideo": null
+    }
+  ]
+}
