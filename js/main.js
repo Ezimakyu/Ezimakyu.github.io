@@ -1,6 +1,6 @@
 /*
  * Main portfolio logic:
- * - Load projects from projects.json
+ * - Load projects from projects.json (with a local fallback for file://)
  * - Render project cards and filter by status
  * - Mobile nav, scroll header
  */
@@ -99,13 +99,26 @@ function renderProjects(projects, filter = 'all') {
   visible.forEach((p) => GRID.appendChild(createCard(p)));
 }
 
-async function init() {
-  if (!GRID) return;
+async function loadProjects() {
+  if (window.location.protocol === 'file:' && Array.isArray(window.PROJECTS)) {
+    return window.PROJECTS;
+  }
   try {
     const response = await fetch('projects.json');
     if (!response.ok) throw new Error('Could not load projects.json');
     const data = await response.json();
-    const projects = data.projects || [];
+    return data.projects || [];
+  } catch (err) {
+    console.error(err);
+    if (Array.isArray(window.PROJECTS)) return window.PROJECTS;
+    throw err;
+  }
+}
+
+async function init() {
+  if (!GRID) return;
+  try {
+    const projects = await loadProjects();
 
     FILTER_BTNS.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -122,7 +135,7 @@ async function init() {
     renderProjects(projects);
   } catch (err) {
     console.error(err);
-    if (GRID) GRID.innerHTML = '<p class="projects__note">Unable to load projects. Please check projects.json.</p>';
+    if (GRID) GRID.innerHTML = '<p class="projects__note">Unable to load projects. If you opened this file directly, use <code>python3 -m http.server 8000</code> or a deployed URL.</p>';
   }
 }
 
