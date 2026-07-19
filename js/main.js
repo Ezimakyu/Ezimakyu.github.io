@@ -2,7 +2,7 @@
  * Main portfolio logic:
  * - Load projects from projects.json
  * - Render project cards and filter by status
- * - Mobile nav, scroll header, reveal-on-scroll animations
+ * - Mobile nav, scroll header
  */
 
 const GRID = document.getElementById('projects-grid');
@@ -45,7 +45,7 @@ function renderMedia(project) {
 
 function createCard(project) {
   const card = document.createElement('a');
-  card.className = 'project-card reveal';
+  card.className = 'project-card';
   card.href = `project.html?p=${encodeURIComponent(project.slug)}`;
 
   const media = document.createElement('div');
@@ -97,9 +97,6 @@ function renderProjects(projects, filter = 'all') {
     : projects.filter((p) => p.status === filter);
 
   visible.forEach((p) => GRID.appendChild(createCard(p)));
-
-  // Re-trigger reveal observer for new nodes
-  requestAnimationFrame(() => observeReveals());
 }
 
 async function init() {
@@ -147,22 +144,5 @@ NAV_LINKS.querySelectorAll('a').forEach((link) => {
 window.addEventListener('scroll', () => {
   HEADER.classList.toggle('is-scrolled', window.scrollY > 50);
 }, { passive: true });
-
-/* Reveal on scroll */
-let observer;
-function observeReveals() {
-  if (observer) observer.disconnect();
-  observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-}
-observeReveals();
 
 init();

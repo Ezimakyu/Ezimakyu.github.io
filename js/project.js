@@ -75,10 +75,6 @@ function renderProject(project) {
   repoLink.href = project.repo;
 
   renderMedia(project);
-
-  document.querySelectorAll('.reveal').forEach((el) => {
-    el.classList.add('is-visible');
-  });
 }
 
 function showError(message) {
