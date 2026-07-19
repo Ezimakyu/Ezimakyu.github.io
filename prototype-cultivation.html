@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Stephen Zhu's personal website and project portfolio." />
-  <title>Stephen Zhu</title>
+  <meta name="description" content="Stephen Zhu's portfolio — Constellations theme prototype." />
+  <title>Cultivation — Stephen Zhu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/prototypes.css" />
 </head>
-<body>
-  <!-- Canvas sits behind the hero only -->
-  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+<body class="theme-cultivation">
+  <canvas id="hero-canvas" class="theme-canvas" aria-hidden="true"></canvas>
 
-  <!-- ===================== NAVIGATION ===================== -->
   <header class="site-header" id="top">
     <nav class="nav container">
-      <a class="nav__logo" href="#top">SZ</a>
+      <a class="nav__logo" href="index.html#top">SZ</a>
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -31,37 +30,38 @@
 
   <div class="prototype-banner">
     <div class="container">
-      <p>Theme prototypes:
+      <p>Theme prototype:
         <a href="prototype-constellations.html">Constellations</a>
-        <a href="prototype-cultivation.html">Cultivation</a>
+        <a href="prototype-cultivation.html" class="is-active">Cultivation</a>
         <a href="prototype-zen.html">Zen</a>
       </p>
     </div>
   </div>
 
   <main>
-    <!-- ===================== HERO ===================== -->
-    <!-- EDIT: name, tagline, and primary CTA text below -->
     <section class="hero" id="hero">
       <div class="container hero__content">
         <p class="hero__eyebrow">Hello, I'm</p>
         <h1 class="hero__title">Stephen Zhu</h1>
         <p class="hero__subtitle">
-          Computer Science student at the University of Illinois Urbana-Champaign.
-          I build AI-driven tools, full-stack systems, and interactive experiments.
+          Computer Science student at UIUC. I build AI-driven tools, full-stack systems, and interactive experiments.
         </p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#projects">Explore projects</a>
           <a class="btn btn--ghost" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">View GitHub</a>
         </div>
+        <p class="prototype-hint">Move your mouse to change the rain; click to release a scroll burst</p>
       </div>
       <a class="hero__scroll" href="#about" aria-label="Scroll to about section">
         <span></span>
       </a>
+      <svg class="mountains" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,300 L0,220 C80,200 150,120 240,160 C320,190 400,80 520,130 C640,180 720,60 840,110 C960,160 1050,90 1200,150 L1200,300 Z" />
+        <path d="M0,300 L0,260 C100,250 200,180 320,210 C450,240 560,150 700,190 C840,230 960,170 1100,210 L1200,230 L1200,300 Z" />
+        <path d="M0,300 L0,280 C120,270 250,230 380,250 C520,270 650,220 800,250 C950,280 1050,260 1200,280 L1200,300 Z" />
+      </svg>
     </section>
 
-    <!-- ===================== ABOUT ===================== -->
-    <!-- EDIT: the paragraphs, interests, and status badges below -->
     <section class="section about" id="about">
       <div class="container">
         <div class="section__header">
@@ -100,8 +100,6 @@
       </div>
     </section>
 
-    <!-- ===================== PROJECTS ===================== -->
-    <!-- Project data is loaded from projects.json; keep the filter markup, edit cards via JSON. -->
     <section class="section projects" id="projects">
       <div class="container">
         <div class="section__header">
@@ -126,11 +124,8 @@
         </div>
       </div>
     </section>
-
-
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="social" aria-label="Social links">
@@ -144,12 +139,12 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.236l-8 4.882-8-4.882V6l8 4.882L20 6v2.236zM4 18V8.7l7.672 4.68a1 1 0 001.04 0L20 8.7V18H4z"/></svg>
         </a>
       </div>
-      <p class="footer__note">Replace the social links in index.html with your real ones.</p>
+      <p class="footer__note">Replace the social links in the HTML with your real ones.</p>
       <p>&copy; <span id="year"></span> Stephen Zhu.</p>
     </div>
   </footer>
 
   <script src="js/main.js" type="module"></script>
-  <script src="js/canvas-bg.js" defer></script>
+  <script src="js/prototype-cultivation.js" defer></script>
 </body>
 </html>

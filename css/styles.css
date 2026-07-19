@@ -796,6 +796,79 @@ img {
   font-size: 0.85rem;
 }
 
+.footer__note {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.75rem;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.social a {
+  display: inline-flex;
+  color: var(--muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.social a:hover {
+  color: var(--heading);
+  transform: translateY(-2px);
+}
+
+.social svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* ============================================
+   Prototype switcher
+   ============================================ */
+.prototype-banner {
+  padding: 0.75rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.prototype-banner p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.prototype-banner a {
+  display: inline-flex;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.82rem;
+  transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.prototype-banner a:hover,
+.prototype-banner a.is-active {
+  color: var(--heading);
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.prototype-banner a.is-active {
+  border-color: var(--accent);
+  background: rgba(124, 92, 255, 0.12);
+}
+
 /* ============================================
    Utilities & animations
    ============================================ */

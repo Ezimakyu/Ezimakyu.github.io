@@ -1,0 +1,132 @@
+/* =====================================================
+   Theme prototypes — shared and per-theme overrides
+   ===================================================== */
+
+/* ---------- Theme color palettes ---------- */
+.theme-constellations {
+  --bg: #05060a;
+  --surface: #0d0e18;
+  --surface-2: #151725;
+  --accent: #7c5cff;
+  --accent-2: #00d4ff;
+  --muted: #9094a8;
+}
+
+.theme-cultivation {
+  --bg: #06100f;
+  --surface: #0a1816;
+  --surface-2: #11211e;
+  --accent: #00d4a8;
+  --accent-2: #ff5caa;
+  --muted: #8aa39e;
+}
+
+.theme-zen {
+  --bg: #0c0b09;
+  --surface: #171410;
+  --surface-2: #201c16;
+  --accent: #d4af37;
+  --accent-2: #6ee7ff;
+  --muted: #a89e8e;
+}
+
+/* ---------- Canvas / background ---------- */
+.theme-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* ---------- Hero entrance animation ---------- */
+.hero__content > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero__eyebrow  { animation-delay: 0.1s; }
+.hero__title    { animation-delay: 0.25s; }
+.hero__subtitle { animation-delay: 0.4s; }
+.hero__actions  { animation-delay: 0.55s; }
+
+@keyframes hero-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Constellation theme ---------- */
+.theme-constellations .hero {
+  background: radial-gradient(circle at 50% 40%, rgba(124, 92, 255, 0.08), transparent 55%),
+              radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.06), transparent 45%);
+}
+
+/* ---------- Cultivation theme ---------- */
+.theme-cultivation .hero {
+  background: radial-gradient(circle at 70% 30%, rgba(0, 212, 168, 0.08), transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(255, 92, 170, 0.06), transparent 45%);
+}
+
+.theme-cultivation .mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.theme-cultivation .mountains path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.25;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: draw-mountains 3s ease-out 1s forwards;
+}
+
+@keyframes draw-mountains {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Zen theme ---------- */
+.theme-zen .hero {
+  background: radial-gradient(circle at 50% 60%, rgba(212, 175, 55, 0.06), transparent 55%),
+              radial-gradient(circle at 20% 30%, rgba(110, 231, 255, 0.05), transparent 45%);
+}
+
+/* ---------- Prototype banner adjustments ---------- */
+.theme-constellations .prototype-banner,
+.theme-cultivation .prototype-banner,
+.theme-zen .prototype-banner {
+  position: relative;
+  z-index: 10;
+}
+
+/* ---------- Social links in footer ---------- */
+.site-footer .social {
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Cursor hint for interactive prototypes ---------- */
+.prototype-hint {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.7;
+  pointer-events: none;
+  text-align: center;
+}

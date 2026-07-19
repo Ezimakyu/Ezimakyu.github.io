@@ -121,4 +121,6 @@ async function init() {
   }
 }
 
+document.getElementById('year').textContent = new Date().getFullYear();
+
 init();
