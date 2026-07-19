@@ -75,10 +75,22 @@ function renderProject(project) {
   repoLink.href = project.repo;
 
   renderMedia(project);
+}
 
-  document.querySelectorAll('.reveal').forEach((el) => {
-    el.classList.add('is-visible');
-  });
+async function loadProjects() {
+  if (window.location.protocol === 'file:' && Array.isArray(window.PROJECTS)) {
+    return window.PROJECTS;
+  }
+  try {
+    const response = await fetch('projects.json');
+    if (!response.ok) throw new Error('Could not load projects.json');
+    const data = await response.json();
+    return data.projects || [];
+  } catch (err) {
+    console.error(err);
+    if (Array.isArray(window.PROJECTS)) return window.PROJECTS;
+    throw err;
+  }
 }
 
 function showError(message) {
@@ -104,10 +116,8 @@ async function init() {
   }
 
   try {
-    const response = await fetch('projects.json');
-    if (!response.ok) throw new Error('Could not load projects.json');
-    const data = await response.json();
-    const project = (data.projects || []).find((p) => p.slug === slug);
+    const projects = await loadProjects();
+    const project = projects.find((p) => p.slug === slug);
 
     if (!project) {
       showError('Project not found.');
@@ -117,8 +127,10 @@ async function init() {
     renderProject(project);
   } catch (err) {
     console.error(err);
-    showError('Unable to load project details.');
+    showError('Unable to load project details. If you opened this file directly, use <code>python3 -m http.server 8000</code> or a deployed URL.');
   }
 }
+
+document.getElementById('year').textContent = new Date().getFullYear();
 
 init();

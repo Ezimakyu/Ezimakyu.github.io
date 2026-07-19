@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project — Stephen Zhu</title>
+  <meta name="description" content="Interactive constellations — Stephen Zhu's playground." />
+  <title>Constellations — Fun</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/theme.css" />
 </head>
-<body class="page-project">
+<body class="theme-constellations">
+  <canvas id="demo-canvas" class="demo-canvas" aria-hidden="true"></canvas>
+
   <header class="site-header" id="top">
     <nav class="nav container">
       <a class="nav__logo" href="index.html#top">SZ</a>
@@ -19,56 +23,32 @@
       <ul class="nav__links">
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="fun.html">Fun</a></li>
+        <li><a class="is-active" href="fun.html">Fun</a></li>
         <li><a class="nav__cta" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </nav>
   </header>
 
+  <div class="fun-banner">
+    <div class="container">
+      <p>Fun stuff:
+        <a href="fun-constellations.html" class="is-active">Constellations</a>
+        <a href="fun-ants.html">Ant Colony</a>
+      </p>
+    </div>
+  </div>
+
   <main>
-    <article class="project-detail" id="project-detail">
-      <div class="container project-detail__container">
-        <a class="project-detail__back" href="index.html#projects">&larr; Back to projects</a>
-
-        <header class="project-detail__header">
-          <div class="project-detail__meta">
-            <span class="project-detail__status" id="detail-status">Project</span>
-            <span class="project-detail__year" id="detail-year"></span>
-          </div>
-          <h1 class="project-detail__title" id="detail-title">Loading…</h1>
-          <p class="project-detail__tagline" id="detail-tagline"></p>
-        </header>
-
-        <!-- Thumbnail placeholder / media -->
-        <div class="project-detail__media" id="detail-media">
-          <div class="project-detail__placeholder">
-            <span>Thumbnail / GIF coming soon</span>
-          </div>
-        </div>
-
-        <div class="project-detail__body">
-          <section class="project-detail__section">
-            <h2>Overview</h2>
-            <div id="detail-summary"></div>
-          </section>
-
-          <section class="project-detail__section">
-            <h2>What I did</h2>
-            <div id="detail-details"></div>
-          </section>
-
-          <section class="project-detail__section">
-            <h2>Tech stack</h2>
-            <ul class="project-detail__tech" id="detail-tech"></ul>
-          </section>
-
-          <section class="project-detail__section project-detail__actions">
-            <a class="btn btn--primary" id="detail-repo" href="#" target="_blank" rel="noopener">View on GitHub</a>
-            <a class="btn btn--ghost" href="index.html#projects">All projects</a>
-          </section>
-        </div>
+    <section class="demo-section" id="demo">
+      <div class="container demo-section__content">
+        <p class="hero__eyebrow">Playground</p>
+        <h1 class="hero__title">Constellations</h1>
+        <p class="hero__subtitle">
+          A drifting network of nodes. Move your mouse to disturb the field and click to send out a ripple.
+        </p>
       </div>
-    </article>
+      <p class="demo-hint">Move your mouse and click to disturb the network</p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -84,25 +64,13 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.236l-8 4.882-8-4.882V6l8 4.882L20 6v2.236zM4 18V8.7l7.672 4.68a1 1 0 001.04 0L20 8.7V18H4z"/></svg>
         </a>
       </div>
-      <p class="footer__note">Replace the social links in the HTML with your real ones.</p>
+      <p class="footer__note">Replace the social links above with your real ones.</p>
       <p>&copy; <span id="year"></span> Stephen Zhu.</p>
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.nav__toggle');
-    const links = document.querySelector('.nav__links');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      links.classList.toggle('is-open');
-    });
-    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      links.classList.remove('is-open');
-    }));
-  </script>
   <script src="js/projects-data.js"></script>
-  <script src="js/project.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/fun-constellations.js" defer></script>
 </body>
 </html>

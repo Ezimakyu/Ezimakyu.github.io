@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project — Stephen Zhu</title>
+  <meta name="description" content="Fun demos and visualizations — Stephen Zhu's playground." />
+  <title>Fun — Stephen Zhu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/theme.css" />
 </head>
-<body class="page-project">
+<body class="theme-constellations">
   <header class="site-header" id="top">
     <nav class="nav container">
       <a class="nav__logo" href="index.html#top">SZ</a>
@@ -19,56 +21,66 @@
       <ul class="nav__links">
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="fun.html">Fun</a></li>
+        <li><a class="is-active" href="fun.html">Fun</a></li>
         <li><a class="nav__cta" href="https://github.com/Ezimakyu" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <article class="project-detail" id="project-detail">
-      <div class="container project-detail__container">
-        <a class="project-detail__back" href="index.html#projects">&larr; Back to projects</a>
-
-        <header class="project-detail__header">
-          <div class="project-detail__meta">
-            <span class="project-detail__status" id="detail-status">Project</span>
-            <span class="project-detail__year" id="detail-year"></span>
-          </div>
-          <h1 class="project-detail__title" id="detail-title">Loading…</h1>
-          <p class="project-detail__tagline" id="detail-tagline"></p>
-        </header>
-
-        <!-- Thumbnail placeholder / media -->
-        <div class="project-detail__media" id="detail-media">
-          <div class="project-detail__placeholder">
-            <span>Thumbnail / GIF coming soon</span>
-          </div>
+    <section class="fun-hub" id="fun">
+      <div class="container">
+        <div class="fun-hub__title section__header section__header--center">
+          <span class="section__eyebrow">Playground</span>
+          <h1 class="section__title">Fun stuff</h1>
+          <p class="section__subtitle">
+            Small interactive visualizations — mostly an excuse to play with canvas and graphs.
+          </p>
         </div>
 
-        <div class="project-detail__body">
-          <section class="project-detail__section">
-            <h2>Overview</h2>
-            <div id="detail-summary"></div>
-          </section>
+        <div class="fun-hub__grid">
+          <a class="project-card" href="fun-constellations.html">
+            <div class="project-card__media">
+              <span class="project-card__placeholder">Interactive canvas preview</span>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__top">
+                <span class="project-card__status status--Demo">Demo</span>
+                <span class="project-card__year">2025</span>
+              </div>
+              <h3 class="project-card__title">Interactive Constellations</h3>
+              <p class="project-card__summary">
+                A drifting network of nodes that connect when close. Move your mouse to disturb the field and click to send out a ripple.
+              </p>
+              <div class="project-card__tags">
+                <span class="tag">Canvas</span>
+                <span class="tag">Particles</span>
+              </div>
+            </div>
+          </a>
 
-          <section class="project-detail__section">
-            <h2>What I did</h2>
-            <div id="detail-details"></div>
-          </section>
-
-          <section class="project-detail__section">
-            <h2>Tech stack</h2>
-            <ul class="project-detail__tech" id="detail-tech"></ul>
-          </section>
-
-          <section class="project-detail__section project-detail__actions">
-            <a class="btn btn--primary" id="detail-repo" href="#" target="_blank" rel="noopener">View on GitHub</a>
-            <a class="btn btn--ghost" href="index.html#projects">All projects</a>
-          </section>
+          <a class="project-card" href="fun-ants.html">
+            <div class="project-card__media">
+              <span class="project-card__placeholder">Interactive canvas preview</span>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__top">
+                <span class="project-card__status status--Demo">Demo</span>
+                <span class="project-card__year">2025</span>
+              </div>
+              <h3 class="project-card__title">Ant Colony on an Expander</h3>
+              <p class="project-card__summary">
+                Ants traverse a sparse, well-connected graph, depositing decaying potential on edges as they search for a shared destination.
+              </p>
+              <div class="project-card__tags">
+                <span class="tag">Graphs</span>
+                <span class="tag">Algorithms</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-    </article>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -84,25 +96,12 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.236l-8 4.882-8-4.882V6l8 4.882L20 6v2.236zM4 18V8.7l7.672 4.68a1 1 0 001.04 0L20 8.7V18H4z"/></svg>
         </a>
       </div>
-      <p class="footer__note">Replace the social links in the HTML with your real ones.</p>
+      <p class="footer__note">Replace the social links above with your real ones.</p>
       <p>&copy; <span id="year"></span> Stephen Zhu.</p>
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.nav__toggle');
-    const links = document.querySelector('.nav__links');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      links.classList.toggle('is-open');
-    });
-    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      links.classList.remove('is-open');
-    }));
-  </script>
   <script src="js/projects-data.js"></script>
-  <script src="js/project.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

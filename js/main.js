@@ -1,8 +1,8 @@
 /*
  * Main portfolio logic:
- * - Load projects from projects.json
+ * - Load projects from projects.json (with a local fallback for file://)
  * - Render project cards and filter by status
- * - Mobile nav, scroll header, reveal-on-scroll animations
+ * - Mobile nav, scroll header
  */
 
 const GRID = document.getElementById('projects-grid');
@@ -12,7 +12,7 @@ const NAV_LINKS = document.querySelector('.nav__links');
 const HEADER = document.querySelector('.site-header');
 const YEAR = document.getElementById('year');
 
-YEAR.textContent = new Date().getFullYear();
+if (YEAR) YEAR.textContent = new Date().getFullYear();
 
 function safeStatusClass(status) {
   return `status--${status.toLowerCase().replace(/\s+/g, '-')}`;
@@ -45,7 +45,7 @@ function renderMedia(project) {
 
 function createCard(project) {
   const card = document.createElement('a');
-  card.className = 'project-card reveal';
+  card.className = 'project-card';
   card.href = `project.html?p=${encodeURIComponent(project.slug)}`;
 
   const media = document.createElement('div');
@@ -97,17 +97,28 @@ function renderProjects(projects, filter = 'all') {
     : projects.filter((p) => p.status === filter);
 
   visible.forEach((p) => GRID.appendChild(createCard(p)));
-
-  // Re-trigger reveal observer for new nodes
-  requestAnimationFrame(() => observeReveals());
 }
 
-async function init() {
+async function loadProjects() {
+  if (window.location.protocol === 'file:' && Array.isArray(window.PROJECTS)) {
+    return window.PROJECTS;
+  }
   try {
     const response = await fetch('projects.json');
     if (!response.ok) throw new Error('Could not load projects.json');
     const data = await response.json();
-    const projects = data.projects || [];
+    return data.projects || [];
+  } catch (err) {
+    console.error(err);
+    if (Array.isArray(window.PROJECTS)) return window.PROJECTS;
+    throw err;
+  }
+}
+
+async function init() {
+  if (!GRID) return;
+  try {
+    const projects = await loadProjects();
 
     FILTER_BTNS.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -124,7 +135,7 @@ async function init() {
     renderProjects(projects);
   } catch (err) {
     console.error(err);
-    GRID.innerHTML = '<p class="projects__note">Unable to load projects. Please check projects.json.</p>';
+    if (GRID) GRID.innerHTML = '<p class="projects__note">Unable to load projects. If you opened this file directly, use <code>python3 -m http.server 8000</code> or a deployed URL.</p>';
   }
 }
 
@@ -146,22 +157,5 @@ NAV_LINKS.querySelectorAll('a').forEach((link) => {
 window.addEventListener('scroll', () => {
   HEADER.classList.toggle('is-scrolled', window.scrollY > 50);
 }, { passive: true });
-
-/* Reveal on scroll */
-let observer;
-function observeReveals() {
-  if (observer) observer.disconnect();
-  observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-}
-observeReveals();
 
 init();
