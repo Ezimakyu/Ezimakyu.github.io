@@ -571,6 +571,7 @@ img {
 .status--Completed { background: rgba(52, 211, 153, 0.12); color: var(--success); border: 1px solid rgba(52, 211, 153, 0.25); }
 .status--In\ progress { background: rgba(251, 191, 36, 0.12); color: var(--warning); border: 1px solid rgba(251, 191, 36, 0.25); }
 .status--Incomplete { background: rgba(248, 113, 113, 0.12); color: var(--danger); border: 1px solid rgba(248, 113, 113, 0.25); }
+.status--Demo { background: rgba(124, 92, 255, 0.12); color: var(--accent); border: 1px solid rgba(124, 92, 255, 0.25); }
 
 .project-card__year {
   font-family: 'JetBrains Mono', monospace;
