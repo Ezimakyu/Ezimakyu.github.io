@@ -5,7 +5,7 @@
  */
 
 (function () {
-  const canvas = document.getElementById('hero-canvas');
+  const canvas = document.getElementById('demo-canvas');
   if (!canvas || !canvas.getContext) return;
 
   const ctx = canvas.getContext('2d');

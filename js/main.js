@@ -12,7 +12,7 @@ const NAV_LINKS = document.querySelector('.nav__links');
 const HEADER = document.querySelector('.site-header');
 const YEAR = document.getElementById('year');
 
-YEAR.textContent = new Date().getFullYear();
+if (YEAR) YEAR.textContent = new Date().getFullYear();
 
 function safeStatusClass(status) {
   return `status--${status.toLowerCase().replace(/\s+/g, '-')}`;
@@ -103,6 +103,7 @@ function renderProjects(projects, filter = 'all') {
 }
 
 async function init() {
+  if (!GRID) return;
   try {
     const response = await fetch('projects.json');
     if (!response.ok) throw new Error('Could not load projects.json');
@@ -124,7 +125,7 @@ async function init() {
     renderProjects(projects);
   } catch (err) {
     console.error(err);
-    GRID.innerHTML = '<p class="projects__note">Unable to load projects. Please check projects.json.</p>';
+    if (GRID) GRID.innerHTML = '<p class="projects__note">Unable to load projects. Please check projects.json.</p>';
   }
 }
 

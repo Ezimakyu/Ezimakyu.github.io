@@ -39,7 +39,8 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -118,7 +119,7 @@ img {
 }
 
 .nav__links a {
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--muted);
   transition: color var(--transition);
@@ -217,7 +218,7 @@ img {
 
 .hero__eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--accent-2);
   margin-bottom: 1rem;
   letter-spacing: 0.08em;
@@ -238,11 +239,11 @@ img {
 }
 
 .hero__subtitle {
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
   color: var(--muted);
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto 2.25rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .hero__actions {
@@ -257,8 +258,8 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
-  font-size: 0.95rem;
+  padding: 0.9rem 1.7rem;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
@@ -341,7 +342,7 @@ img {
 .section__eyebrow {
   display: block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--accent-2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -349,11 +350,11 @@ img {
 }
 
 .section__title {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
   font-weight: 700;
   color: var(--heading);
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .section__subtitle {
@@ -374,9 +375,9 @@ img {
 
 .about__text p {
   color: var(--muted);
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-  line-height: 1.75;
+  font-size: 1.2rem;
+  margin-bottom: 1.35rem;
+  line-height: 1.8;
 }
 
 .about__text strong {
@@ -419,7 +420,7 @@ img {
 }
 
 .about__card h3 {
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--heading);
   margin-bottom: 1rem;
 }
@@ -427,8 +428,8 @@ img {
 .about__list {
   list-style: none;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.9;
+  font-size: 1.05rem;
+  line-height: 1.95;
 }
 
 .about__list a {
@@ -464,8 +465,8 @@ img {
 }
 
 .filter__btn {
-  padding: 0.45rem 0.9rem;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--muted);
   background: transparent;
@@ -485,7 +486,7 @@ img {
 }
 
 .projects__note {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -539,7 +540,7 @@ img {
 
 .project-card__placeholder {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   text-align: center;
   padding: 1rem;
 }
@@ -559,11 +560,11 @@ img {
 }
 
 .project-card__status {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 0.25rem 0.55rem;
+  padding: 0.3rem 0.65rem;
   border-radius: 999px;
 }
 
@@ -573,22 +574,22 @@ img {
 
 .project-card__year {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: var(--muted);
 }
 
 .project-card__title {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--heading);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   letter-spacing: -0.02em;
 }
 
 .project-card__summary {
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.65;
   flex: 1;
 }
 
@@ -600,7 +601,7 @@ img {
 }
 
 .project-card__tags .tag {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
 }
 
 /* ============================================
@@ -665,10 +666,10 @@ img {
 }
 
 .project-detail__tagline {
-  font-size: 1.2rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
   color: var(--muted);
   max-width: 720px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .project-detail__media {
@@ -707,16 +708,17 @@ img {
 }
 
 .project-detail__section h2 {
-  font-size: 1.3rem;
+  font-size: 1.55rem;
   color: var(--heading);
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
   font-weight: 700;
 }
 
 .project-detail__section p {
   color: var(--muted);
-  margin-bottom: 1rem;
-  line-height: 1.75;
+  font-size: 1.1rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.8;
 }
 
 .project-detail__tech {
@@ -728,8 +730,8 @@ img {
 
 .project-detail__tech li {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
-  padding: 0.35rem 0.75rem;
+  font-size: 0.92rem;
+  padding: 0.4rem 0.85rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -746,54 +748,14 @@ img {
 }
 
 /* ============================================
-   Contact
-   ============================================ */
-.contact {
-  text-align: center;
-}
-
-.contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-
-.contact__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.85rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--heading);
-  font-weight: 500;
-  transition: background var(--transition), border-color var(--transition), transform var(--transition);
-}
-
-.contact__link:hover {
-  background: var(--surface-2);
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.contact__icon {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--accent-2);
-  font-size: 0.85rem;
-}
-
-/* ============================================
    Footer
    ============================================ */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2rem 0;
+  padding: 2.25rem 0;
   text-align: center;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 
 .footer__note {
@@ -822,51 +784,9 @@ img {
 }
 
 .social svg {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   fill: currentColor;
-}
-
-/* ============================================
-   Prototype switcher
-   ============================================ */
-.prototype-banner {
-  padding: 0.75rem 0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.prototype-banner p {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.prototype-banner a {
-  display: inline-flex;
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 0.82rem;
-  transition: color var(--transition), background var(--transition), border-color var(--transition);
-}
-
-.prototype-banner a:hover,
-.prototype-banner a.is-active {
-  color: var(--heading);
-  background: var(--surface);
-  border-color: var(--accent);
-}
-
-.prototype-banner a.is-active {
-  border-color: var(--accent);
-  background: rgba(124, 92, 255, 0.12);
 }
 
 /* ============================================
